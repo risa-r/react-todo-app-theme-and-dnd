@@ -3,7 +3,9 @@ export default function Form() {
     <form>
       <label id="todoInput"></label>
       <input type="text" placeholder="new task" name="todoInput"></input>
-      <button>Add task</button>
+      <button>
+        Add<span className="visually-hidden"> task</span>
+      </button>
     </form>
   );
 }

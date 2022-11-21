@@ -8,5 +8,5 @@ export default function Todo({ tasks }) {
     );
   });
 
-  return <div>{taskList}</div>;
+  return <ul className="todo-list">{taskList}</ul>;
 }
