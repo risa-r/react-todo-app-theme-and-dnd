@@ -1,10 +1,10 @@
 import FilterButtons from "./FilterButtons";
 
-export default function Footer() {
+export default function Footer({ buttonsList }) {
   return (
     <>
       <div>tasks left</div>
-      <FilterButtons />
+      {buttonsList}
       <button>Clear Completed</button>
     </>
   );

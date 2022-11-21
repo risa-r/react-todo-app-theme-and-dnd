@@ -1,19 +1,11 @@
-import { useContext } from "react";
-import { FilterButtonsContext } from "./FilterButtonsContext";
+import { useContext, useState } from "react";
 
-export default function FilterButtons() {
-  const filterButtons = useContext(FilterButtonsContext);
-  const filterNames = Object.keys(filterButtons);
-
-  const buttonsList = filterNames.map((btn) => {
-    return (
-      <button key={btn}>
-        <span className="visually-hidden">show </span>
-        {btn}
-        <span className="visually-hidden"> tasks</span>
-      </button>
-    );
-  });
-
-  return <div>{buttonsList}</div>;
+export default function FilterButtons({ name }) {
+  return (
+    <button type="button">
+      <span className="visually-hidden">Show </span>
+      {name}
+      <span className="visually-hidden"> tasks</span>
+    </button>
+  );
 }

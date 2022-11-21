@@ -3,15 +3,20 @@ import Form from "./components/Form";
 import Todo from "./components/Todo";
 import Footer from "./components/Footer";
 import { nanoid } from "nanoid";
-import { FilterButtonsContext } from "./components/FilterButtonsContext";
+import FilterButtons from "./components/FilterButtons";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
+  const [filter, setFilter] = useState("All");
+
   const filterButtons = {
     All: () => true,
     Active: (todo) => !todo.completed,
     Completed: (todo) => todo.completed,
   };
+
+  const filterNames = Object.keys(filterButtons);
+
   const taskList = todos.map((todo) => (
     <Todo
       id={todo.id}
@@ -21,6 +26,15 @@ export default function App({ tasks }) {
       editTask={editTask}
       deleteTask={deleteTask}
       handleToggleCompleted={handleToggleCompleted}
+    />
+  ));
+
+  const buttonsList = filterNames.map((name) => (
+    <FilterButtons
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      sefFilter={setFilter}
     />
   ));
 
@@ -57,14 +71,14 @@ export default function App({ tasks }) {
   }
 
   return (
-    <FilterButtonsContext.Provider value={filterButtons}>
+    <>
       <h1>TODO</h1>
       <span className="visually-hidden">
         <button>switch to dark mode</button>
       </span>
       <Form addTask={addTask} />
       <ul className="todo-list">{taskList}</ul>
-      <Footer />
-    </FilterButtonsContext.Provider>
+      <Footer buttonsList={buttonsList} />
+    </>
   );
 }
