@@ -3,10 +3,15 @@ import Form from "./components/Form";
 import Todo from "./components/Todo";
 import Footer from "./components/Footer";
 import { nanoid } from "nanoid";
+import { FilterButtonsContext } from "./components/FilterButtonsContext";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
-
+  const filterButtons = {
+    All: () => true,
+    Active: (todo) => !todo.completed,
+    Completed: (todo) => todo.completed,
+  };
   const taskList = todos.map((todo) => (
     <Todo
       id={todo.id}
@@ -52,7 +57,7 @@ export default function App({ tasks }) {
   }
 
   return (
-    <>
+    <FilterButtonsContext.Provider value={filterButtons}>
       <h1>TODO</h1>
       <span className="visually-hidden">
         <button>switch to dark mode</button>
@@ -60,6 +65,6 @@ export default function App({ tasks }) {
       <Form addTask={addTask} />
       <ul className="todo-list">{taskList}</ul>
       <Footer />
-    </>
+    </FilterButtonsContext.Provider>
   );
 }
