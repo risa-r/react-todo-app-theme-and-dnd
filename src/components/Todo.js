@@ -24,26 +24,42 @@ export default function Todo({
 
   const editTemplate = (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={taskName} onChange={handleChange}></input>
+      <input
+        className="todo-edit-input"
+        type="text"
+        value={taskName}
+        onChange={handleChange}
+      ></input>
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
       </label>
-      <button type="submit">Save</button>
+      <button className="todo-btn save" type="submit">
+        Save
+      </button>
     </form>
   );
 
   const viewTemplate = (
     <>
       <input
+        className="todo-checkbox"
         type="checkbox"
         checked={completed}
         onChange={() => handleToggleCompleted(id)}
       />
-      <label>{name}</label>
-      <button onClick={() => setIsEditing(true)}>Edit</button>
-      <button onClick={() => deleteTask(id)}>Delete</button>
+      <label className="todo-text">{name}</label>
+      <button className="todo-btn edit" onClick={() => setIsEditing(true)}>
+        Edit<span className="visually-hidden"> task</span>
+      </button>
+      <button className="todo-btn delete" onClick={() => deleteTask(id)}>
+        Delete<span className="visually-hidden"> task</span>
+      </button>
     </>
   );
 
-  return <li key={id}>{isEditing ? editTemplate : viewTemplate}</li>;
+  return (
+    <li className="todo-item" key={id}>
+      {isEditing ? editTemplate : viewTemplate}
+    </li>
+  );
 }

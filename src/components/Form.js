@@ -17,16 +17,17 @@ export default function Form({ addTask }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="add-task-form" onSubmit={handleSubmit}>
       <label id="todoInput"></label>
       <input
+        className="add-task-input"
         type="text"
         placeholder="new task"
         name="todoInput"
         value={name}
         onChange={handleChange}
       ></input>
-      <button type="submit">
+      <button className="add-button" type="submit">
         Add<span className="visually-hidden"> task</span>
       </button>
     </form>

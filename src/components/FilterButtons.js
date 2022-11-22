@@ -1,6 +1,7 @@
 export default function FilterButtons({ name, isPressed, setFilter }) {
   return (
     <button
+      className="filter-buttons"
       type="button"
       aria-pressed={isPressed}
       onClick={() => setFilter(name)}

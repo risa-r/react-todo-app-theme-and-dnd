@@ -79,18 +79,25 @@ export default function App({ tasks }) {
   const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
 
   return (
-    <>
-      <h1>TODO</h1>
-      <span className="visually-hidden">
-        <button>switch to dark mode</button>
-      </span>
+    <div className="wrapper">
+      <header>
+        <h1>TODO</h1>
+        <span className="visually-hidden">
+          <button>switch to dark mode</button>
+        </span>
+      </header>
       <Form addTask={addTask} />
-      <ul className="todo-list">{taskList}</ul>
-      <div>{activeTasksNumber} tasks left</div>
-      {buttonsList}
-      <button onClick={clearCompleted}>
-        Clear Completed<span className="visually-hidden"> tasks</span>
-      </button>
-    </>
+      <main className="todo-list-and-buttons-wrapper">
+        <ul className="todo-list">{taskList}</ul>
+        <aside className="buttons-wrapper">
+          <div className="task-counter">{activeTasksNumber} items left</div>
+          {buttonsList}
+          <button onClick={clearCompleted}>
+            Clear Completed<span className="visually-hidden"> tasks</span>
+          </button>
+        </aside>
+      </main>
+      <footer></footer>
+    </div>
   );
 }
