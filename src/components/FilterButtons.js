@@ -1,5 +1,3 @@
-import { useContext, useState } from "react";
-
 export default function FilterButtons({ name, isPressed, setFilter }) {
   return (
     <button
