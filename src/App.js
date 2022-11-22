@@ -71,6 +71,13 @@ export default function App({ tasks }) {
     setTodos(updatedTasks);
   }
 
+  function clearCompleted() {
+    const activeTasks = todos.filter((todo) => !todo.completed);
+    setTodos(activeTasks);
+  }
+
+  const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
+
   return (
     <>
       <h1>TODO</h1>
@@ -79,9 +86,11 @@ export default function App({ tasks }) {
       </span>
       <Form addTask={addTask} />
       <ul className="todo-list">{taskList}</ul>
-      <div>tasks left</div>
+      <div>{activeTasksNumber} tasks left</div>
       {buttonsList}
-      <button>Clear Completed</button>
+      <button onClick={clearCompleted}>
+        Clear Completed<span className="visually-hidden"> tasks</span>
+      </button>
     </>
   );
 }
