@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
-import Footer from "./components/Footer";
 import { nanoid } from "nanoid";
 import FilterButtons from "./components/FilterButtons";
 
@@ -17,24 +16,26 @@ export default function App({ tasks }) {
 
   const filterNames = Object.keys(filterButtons);
 
-  const taskList = todos.map((todo) => (
-    <Todo
-      id={todo.id}
-      name={todo.name}
-      key={todo.id}
-      completed={todo.completed}
-      editTask={editTask}
-      deleteTask={deleteTask}
-      handleToggleCompleted={handleToggleCompleted}
-    />
-  ));
+  const taskList = todos
+    .filter(filterButtons[filter])
+    .map((todo) => (
+      <Todo
+        id={todo.id}
+        name={todo.name}
+        key={todo.id}
+        completed={todo.completed}
+        editTask={editTask}
+        deleteTask={deleteTask}
+        handleToggleCompleted={handleToggleCompleted}
+      />
+    ));
 
   const buttonsList = filterNames.map((name) => (
     <FilterButtons
       key={name}
       name={name}
       isPressed={name === filter}
-      sefFilter={setFilter}
+      setFilter={setFilter}
     />
   ));
 
@@ -78,7 +79,9 @@ export default function App({ tasks }) {
       </span>
       <Form addTask={addTask} />
       <ul className="todo-list">{taskList}</ul>
-      <Footer buttonsList={buttonsList} />
+      <div>tasks left</div>
+      {buttonsList}
+      <button>Clear Completed</button>
     </>
   );
 }
