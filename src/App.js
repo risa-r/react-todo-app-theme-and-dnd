@@ -82,9 +82,9 @@ export default function App({ tasks }) {
     <div className="wrapper">
       <header>
         <h1>TODO</h1>
-        <span className="visually-hidden">
-          <button>switch to dark mode</button>
-        </span>
+        <button>
+          ☾<span className="visually-hidden">switch to dark mode</span>
+        </button>
       </header>
       <Form addTask={addTask} />
       <main className="todo-list-and-buttons-wrapper">
