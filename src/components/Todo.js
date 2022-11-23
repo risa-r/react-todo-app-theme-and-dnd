@@ -22,6 +22,10 @@ export default function Todo({
     setTaskName(e.target.value);
   }
 
+  function handleCancel() {
+    setIsEditing(false);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     editTask(id, taskName);
@@ -41,7 +45,10 @@ export default function Todo({
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
       </label>
-      <button className="todo-btn-save" type="submit">
+      <button className="todo-btn" onClick={handleCancel}>
+        Cancel
+      </button>
+      <button className="todo-btn" type="submit">
         Save
       </button>
     </form>
@@ -49,12 +56,14 @@ export default function Todo({
 
   const viewTemplate = (
     <>
-      <input
-        className="todo-checkbox"
-        type="checkbox"
-        checked={completed}
-        onChange={() => handleToggleCompleted(id)}
-      />
+      <div className="gradient-checkbox">
+        <input
+          className="todo-checkbox"
+          type="checkbox"
+          checked={completed}
+          onChange={() => handleToggleCompleted(id)}
+        />
+      </div>
       <label className="todo-text">{name}</label>
       <button
         className="todo-btn edit"
