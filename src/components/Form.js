@@ -26,6 +26,7 @@ export default function Form({ addTask }) {
         name="todoInput"
         value={name}
         onChange={handleChange}
+        maxLength="75"
       ></input>
       <button className="add-button" type="submit">
         Add<span className="visually-hidden"> task</span>

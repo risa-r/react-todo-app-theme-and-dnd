@@ -31,6 +31,7 @@ export default function Todo({
         type="text"
         value={taskName}
         onChange={handleChange}
+        maxLength="75"
       ></input>
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>

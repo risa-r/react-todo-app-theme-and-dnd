@@ -102,6 +102,17 @@ h1 {
   margin-bottom: 0;
 }
 
+.todo-item{
+  border-bottom: 1px solid hsl(233, 11%, 84%);
+  height: 3.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
 input[type='checkbox']{
   appearance: none;
   position: relative;
@@ -130,20 +141,10 @@ input[type='checkbox']:checked::before{
   visibility: visible;
 }
 
-.todo-item{
-  border-bottom: 1px solid hsl(233, 11%, 84%);
-  height: 3.5rem;
-  padding: 1rem;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .todo-text {
   display: inline-block;
-  width: 21rem;
-  padding-left: 0.8rem;
+  width: 22rem;
+  overflow: hidden;
 }
 
 .todo-edit-input {
@@ -169,7 +170,6 @@ input[type='checkbox']:checked::before{
 }
 
 .filter-buttons {
- 
   font-weight: 700;
 }
 
