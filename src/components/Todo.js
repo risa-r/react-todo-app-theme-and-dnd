@@ -21,7 +21,6 @@ export default function Todo({
   function handleSubmit(e) {
     e.preventDefault();
     editTask(id, taskName);
-    setTaskName("");
     setIsEditing(false);
   }
 
@@ -36,7 +35,7 @@ export default function Todo({
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
       </label>
-      <button className="todo-btn save" type="submit">
+      <button className="todo-btn-save" type="submit">
         Save
       </button>
     </form>
