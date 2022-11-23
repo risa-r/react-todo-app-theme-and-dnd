@@ -106,7 +106,13 @@ export default function App({ tasks }) {
       <div className="App" data-theme={theme}>
         <header>
           <h1>TODO</h1>
-          <button className="theme-button" onClick={switchTheme}>
+          <button
+            className="theme-button"
+            onClick={() => {
+              switchTheme();
+              console.log(theme);
+            }}
+          >
             {theme === "dark" ? <BsSunFill /> : <BsMoonFill />}
             <span className="visually-hidden">
               Switch to {theme === "light" ? "dark" : "light"} theme
