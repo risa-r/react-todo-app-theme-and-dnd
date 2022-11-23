@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
 import { nanoid } from "nanoid";
@@ -6,6 +6,7 @@ import FilterButtons from "./components/FilterButtons";
 import useLocalStorage from "use-local-storage";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import usePrevious from "./components/UsePrevious";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
@@ -89,7 +90,16 @@ export default function App({ tasks }) {
     setTodos(activeTasks);
   }
 
+  const taskCounterTextRef = useRef(null);
   const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
+  const itemsNoun = activeTasksNumber > 1 ? "items" : "item";
+  const prevTodosLength = usePrevious(todos.length);
+
+  useEffect(() => {
+    if (prevTodosLength - todos.length === 1) {
+      taskCounterTextRef.current.focus(); //This focus is not working
+    }
+  }, [todos.length, prevTodosLength]);
 
   return (
     <IconContext.Provider value={{ color: "hsl(0, 0%, 98%)", size: "1.7rem" }}>
@@ -107,7 +117,13 @@ export default function App({ tasks }) {
         <main className="todo-list-and-buttons-wrapper">
           <ul className="todo-list">{taskList}</ul>
           <aside className="buttons-wrapper">
-            <div className="task-counter">{activeTasksNumber} items left</div>
+            <div
+              className="task-counter"
+              tabIndex="-1"
+              ref={taskCounterTextRef}
+            >
+              {activeTasksNumber} {itemsNoun} left
+            </div>
             {buttonsList}
             <button className="clear-completed-btn" onClick={clearCompleted}>
               Clear Completed<span className="visually-hidden"> tasks</span>

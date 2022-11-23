@@ -73,7 +73,7 @@ export default function Todo({
 
   useEffect(() => {
     if (wasEditing && !isEditing) {
-      editButtonRef.current.focus();
+      editButtonRef.current.focus(); //This focus is not working
     }
     if (!wasEditing && isEditing) {
       editInputRef.current.focus();
