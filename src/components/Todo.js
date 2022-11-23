@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import usePrevious from "./UsePrevious";
 
 export default function Todo({
   id,
@@ -11,8 +12,11 @@ export default function Todo({
   deleteTask,
   handleToggleCompleted,
 }) {
-  const [isEditing, setIsEditing] = useState(false);
   const [taskName, setTaskName] = useState(name);
+  const [isEditing, setIsEditing] = useState(false);
+  const wasEditing = usePrevious(isEditing);
+  const editButtonRef = useRef(null);
+  const editInputRef = useRef(null);
 
   function handleChange(e) {
     setTaskName(e.target.value);
@@ -32,6 +36,7 @@ export default function Todo({
         value={taskName}
         onChange={handleChange}
         maxLength="75"
+        ref={editInputRef}
       ></input>
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
@@ -51,7 +56,11 @@ export default function Todo({
         onChange={() => handleToggleCompleted(id)}
       />
       <label className="todo-text">{name}</label>
-      <button className="todo-btn edit" onClick={() => setIsEditing(true)}>
+      <button
+        className="todo-btn edit"
+        onClick={() => setIsEditing(true)}
+        ref={editButtonRef}
+      >
         <FiEdit2 />
         <span className="visually-hidden">Edit task</span>
       </button>
@@ -61,6 +70,15 @@ export default function Todo({
       </button>
     </>
   );
+
+  useEffect(() => {
+    if (wasEditing && !isEditing) {
+      editButtonRef.current.focus();
+    }
+    if (!wasEditing && isEditing) {
+      editInputRef.current.focus();
+    }
+  }, [wasEditing, isEditing]);
 
   return (
     <IconContext.Provider value={{ color: "hsl(236, 9%, 61%)", size: "1rem" }}>
