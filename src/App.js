@@ -4,6 +4,8 @@ import Todo from "./components/Todo";
 import { nanoid } from "nanoid";
 import FilterButtons from "./components/FilterButtons";
 import useLocalStorage from "use-local-storage";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
+import { IconContext } from "react-icons";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
@@ -90,28 +92,30 @@ export default function App({ tasks }) {
   const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
 
   return (
-    <div className="App" data-theme={theme}>
-      <header>
-        <h1>TODO</h1>
-        <button onClick={switchTheme}>
-          ☾
-          <span className="visually-hidden">
-            Switch to {theme === "light" ? "dark" : "light"} theme
-          </span>
-        </button>
-      </header>
-      <Form addTask={addTask} />
-      <main className="todo-list-and-buttons-wrapper">
-        <ul className="todo-list">{taskList}</ul>
-        <aside className="buttons-wrapper">
-          <div className="task-counter">{activeTasksNumber} items left</div>
-          {buttonsList}
-          <button onClick={clearCompleted}>
-            Clear Completed<span className="visually-hidden"> tasks</span>
+    <IconContext.Provider value={{ color: "hsl(0, 0%, 98%)", size: "1.7rem" }}>
+      <div className="App" data-theme={theme}>
+        <header>
+          <h1>TODO</h1>
+          <button className="theme-button" onClick={switchTheme}>
+            {theme === "dark" ? <BsSunFill /> : <BsMoonFill />}
+            <span className="visually-hidden">
+              Switch to {theme === "light" ? "dark" : "light"} theme
+            </span>
           </button>
-        </aside>
-      </main>
-      <footer></footer>
-    </div>
+        </header>
+        <Form addTask={addTask} />
+        <main className="todo-list-and-buttons-wrapper">
+          <ul className="todo-list">{taskList}</ul>
+          <aside className="buttons-wrapper">
+            <div className="task-counter">{activeTasksNumber} items left</div>
+            {buttonsList}
+            <button className="clear-completed-btn" onClick={clearCompleted}>
+              Clear Completed<span className="visually-hidden"> tasks</span>
+            </button>
+          </aside>
+        </main>
+        <footer></footer>
+      </div>
+    </IconContext.Provider>
   );
 }

@@ -32,7 +32,7 @@ button {
   color: hsl(236, 9%, 61%);
   font-weight: 400;
   border: none;
-  background-color: white;
+  background-color: transparent;
 }
 
 .visually-hidden {
@@ -54,12 +54,17 @@ button {
 
 header {
   display: flex;
+  justify-content: space-between;
 }
 
 h1 {
   color:hsl(0, 0%, 98%);
   margin-left: 1rem;
   letter-spacing: 0.7rem;
+}
+
+.theme-button {
+  padding: 1rem;
 }
 
 .add-task-form {
@@ -144,11 +149,12 @@ input[type='checkbox']:checked::before{
   height: 3rem;
   font-size: 0.9rem;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly
 }
 
 .filter-buttons {
+ 
   font-weight: 700;
 }
 
@@ -158,6 +164,11 @@ input[type='checkbox']:checked::before{
 
 .task-counter {
   color:hsl(236, 9%, 61%);
+  padding-right: 1.6rem;
+}
+
+.clear-completed-btn {
+  padding-left: 1.6rem;
 }
 
 footer {

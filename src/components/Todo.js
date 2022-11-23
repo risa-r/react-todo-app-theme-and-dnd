@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { FiEdit2 } from "react-icons/fi";
+import { IconContext } from "react-icons";
 
 export default function Todo({
   id,
@@ -49,17 +52,21 @@ export default function Todo({
       />
       <label className="todo-text">{name}</label>
       <button className="todo-btn edit" onClick={() => setIsEditing(true)}>
-        Edit<span className="visually-hidden"> task</span>
+        <FiEdit2 />
+        <span className="visually-hidden">Edit task</span>
       </button>
       <button className="todo-btn delete" onClick={() => deleteTask(id)}>
-        Delete<span className="visually-hidden"> task</span>
+        <RiDeleteBinLine />
+        <span className="visually-hidden">Delete task</span>
       </button>
     </>
   );
 
   return (
-    <li className="todo-item" key={id}>
-      {isEditing ? editTemplate : viewTemplate}
-    </li>
+    <IconContext.Provider value={{ color: "hsl(236, 9%, 61%)", size: "1rem" }}>
+      <li className="todo-item" key={id}>
+        {isEditing ? editTemplate : viewTemplate}
+      </li>
+    </IconContext.Provider>
   );
 }
