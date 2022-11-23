@@ -3,10 +3,16 @@ import Form from "./components/Form";
 import Todo from "./components/Todo";
 import { nanoid } from "nanoid";
 import FilterButtons from "./components/FilterButtons";
+import useLocalStorage from "use-local-storage";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
   const [filter, setFilter] = useState("All");
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
 
   const filterButtons = {
     All: () => true,
@@ -38,6 +44,11 @@ export default function App({ tasks }) {
       setFilter={setFilter}
     />
   ));
+
+  function switchTheme() {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  }
 
   function addTask(name) {
     const newTask = { id: `todo-${nanoid()}`, name: name, completed: false };
@@ -79,11 +90,14 @@ export default function App({ tasks }) {
   const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
 
   return (
-    <div className="wrapper">
+    <div className="App" data-theme={theme}>
       <header>
         <h1>TODO</h1>
-        <button>
-          ☾<span className="visually-hidden">switch to dark mode</span>
+        <button onClick={switchTheme}>
+          ☾
+          <span className="visually-hidden">
+            Switch to {theme === "light" ? "dark" : "light"} theme
+          </span>
         </button>
       </header>
       <Form addTask={addTask} />

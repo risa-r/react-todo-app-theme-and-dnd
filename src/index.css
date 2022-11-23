@@ -45,7 +45,7 @@ button {
   white-space: nowrap;
 }
 
-.wrapper {
+.App {
   display: block;
   width: 31rem;
   margin: 0 auto;
