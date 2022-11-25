@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import { IconContext } from "react-icons";
-import usePrevious from "./UsePrevious";
+import usePrevious from "../UsePrevious";
+import "./todo.css";
 
 export default function Todo({
   id,

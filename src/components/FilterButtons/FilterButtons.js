@@ -1,3 +1,5 @@
+import "./filterButtons.css";
+
 export default function FilterButtons({ name, isPressed, setFilter }) {
   return (
     <button

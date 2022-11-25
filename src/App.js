@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import Form from "./components/Form";
-import Todo from "./components/Todo";
+import Form from "./components/Form/Form";
+import Todo from "./components/Todo/Todo";
 import { nanoid } from "nanoid";
-import FilterButtons from "./components/FilterButtons";
+import FilterButtons from "./components/FilterButtons/FilterButtons";
 import useLocalStorage from "use-local-storage";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import usePrevious from "./components/UsePrevious";
+import "./App.css";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);

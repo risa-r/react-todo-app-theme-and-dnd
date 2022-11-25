@@ -1,0 +1,73 @@
+.App {
+    display: block;
+    width: 31rem;
+    margin: 0 auto;
+  }
+
+button, input {
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+  } 
+  
+button {
+    color: var(--text-secondary);
+    font-weight: 400;
+    border: none;
+    background-color: transparent;
+}
+
+button:hover {
+    color: var(--text-primary)
+}
+
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    color:hsl(0, 0%, 98%);
+    margin-left: 1rem;
+    letter-spacing: 0.7rem;
+}
+
+.theme-button {
+    padding: 1rem;
+}
+
+.buttons-wrapper {
+    height: 3rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly
+  }
+  
+  
+  
+  .task-counter {
+    color:var(--text-secondary);
+    padding-right: 1.6rem;
+  }
+  
+  .clear-completed-btn {
+    padding-left: 1.6rem;
+  }
+  
+  footer {
+    height: 5rem;
+  }
+  

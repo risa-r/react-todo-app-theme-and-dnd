@@ -2,6 +2,20 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--background);
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0 auto;
+  width: 1440px;
+  font-size: 18px;
+  color:hsl(235, 19%, 35%);
+  font-family: 'Josefin Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
   --background: hsl(0, 0%, 98%);
   --background-image: url(../images/bg-desktop-light.jpg);
@@ -22,20 +36,6 @@
   --accent-secondary:hsl(236, 33%, 92%);
 }
 
-body {
-  background-color: var(--background);
-  background-image: var(--background-image);
-  background-repeat: no-repeat;
-  display: block;
-  margin: 0 auto;
-  width: 1440px;
-  font-size: 18px;
-  color:hsl(235, 19%, 35%);
-  font-family: 'Josefin Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* dark
 - Very Dark Blue: hsl(235, 21%, 11%)
 - Very Dark Desaturated Blue: hsl(235, 24%, 19%)
@@ -52,197 +52,3 @@ body {
 - Light Grayish Blue: hsl(233, 11%, 84%)
 - Dark Grayish Blue: hsl(236, 9%, 61%)
 - Very Dark Grayish Blue: hsl(235, 19%, 35%) */
-
-button, input {
-  font-family: inherit;
-  font-size: 100%;
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
-} 
-
-button {
-  color: var(--text-secondary);
-  font-weight: 400;
-  border: none;
-  background-color: transparent;
-}
-
-button:hover {
-  color: var(--text-primary)
-}
-
-.visually-hidden {
-  position: absolute !important;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.App {
-  display: block;
-  width: 31rem;
-  margin: 0 auto;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-h1 {
-  color:hsl(0, 0%, 98%);
-  margin-left: 1rem;
-  letter-spacing: 0.7rem;
-}
-
-.theme-button {
-  padding: 1rem;
-}
-
-.add-task-form {
-  
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.add-task-input{
-  border-radius: 5px;
-  border: 1px solid hsl(233, 11%, 84%);
-  margin-left:0;
-  width: 28rem;
-  height: 3rem;
-  text-indent: 1rem;
-  margin: 0.2rem;
-}
-
-.add-button {
-  font-size: 1rem;
-  width: 2.5rem;
-  height: 2.8rem;
-  margin-left: 0.3rem;
-  background-color: var(--list-background);
-  border-radius: 3px;
-  border: 1px solid var(--accent-secondary);
-}
-
-.todo-list-and-buttons-wrapper {
-  margin-top: 1.5rem;
-  border-radius: 5px;
-  background-color: var(--list-background);
-  border: 1px solid var(--accent-secondary);
-}
-
-.todo-list{
-  margin-top: 0;
-  padding-left: 0;
-  list-style: none;
-  margin-bottom: 0;
-}
-
-.todo-item{
-  border-bottom: 1px solid var(--accent-secondary);
-  height: 3.5rem;
-  padding: 1rem;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-}
-
-input[type='checkbox']{
-  appearance: none;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--list-background);
-}
-
-.gradient-checkbox {
-  position: relative;
-  background: var(--accent-primary);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-}
-
-.gradient-checkbox:hover{
-  background:linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
-}
-
-input[type='checkbox']:checked{
-  background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
-  
-}
-
-input[type='checkbox']::before{
-  content: '✔︎';
-  position: absolute;
-  font-size: 0.8rem;
-  color: white;
-  right: 4px;
-  top: 4px;
-  visibility: hidden;
-}
-
-input[type='checkbox']:checked::before{
-  visibility: visible;
-}
-
-.todo-text {
-  display: inline-block;
-  width: 22rem;
-  overflow: hidden;
-  margin-left: 0.5rem;
-}
-
-.todo-edit-input {
-  width: 21rem;
-  padding: 0.3rem;
-  border: 1px solid hsl(236, 9%, 61%);
-  border-radius: 5px;
-  text-indent: 0.5rem;
-  margin-left: 1.5rem;
-}
-
-.todo-btn {
-  font-size: 0.8rem;
-  margin-left: 1rem;
-}
-
-.buttons-wrapper {
-  height: 3rem;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly
-}
-
-.filter-buttons {
-  font-weight: 700;
-}
-
-.filter-buttons:hover {
-  color:var(--text-primary)
-}
-
-.task-counter {
-  color:var(--text-secondary);
-  padding-right: 1.6rem;
-}
-
-.clear-completed-btn {
-  padding-left: 1.6rem;
-}
-
-footer {
-  height: 5rem;
-}
