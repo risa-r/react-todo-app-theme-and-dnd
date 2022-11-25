@@ -1,4 +1,4 @@
-import "./filterButtons.css";
+import "./filterButtons.scoped.css";
 
 export default function FilterButtons({ name, isPressed, setFilter }) {
   return (

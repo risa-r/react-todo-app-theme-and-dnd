@@ -3,7 +3,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import usePrevious from "../UsePrevious";
-import "./todo.css";
+import "./todo.scoped.css";
 
 export default function Todo({
   id,
@@ -11,7 +11,7 @@ export default function Todo({
   completed,
   editTask,
   deleteTask,
-  handleToggleCompleted,
+  handleToggleCompleted
 }) {
   const [taskName, setTaskName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
@@ -42,7 +42,7 @@ export default function Todo({
         onChange={handleChange}
         maxLength="75"
         ref={editInputRef}
-      ></input>
+      />
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
       </label>

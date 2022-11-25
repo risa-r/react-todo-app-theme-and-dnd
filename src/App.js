@@ -7,7 +7,7 @@ import useLocalStorage from "use-local-storage";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import usePrevious from "./components/UsePrevious";
-import "./App.css";
+import "./App.scoped.css";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
@@ -20,15 +20,15 @@ export default function App({ tasks }) {
 
   const filterButtons = {
     All: () => true,
-    Active: (todo) => !todo.completed,
-    Completed: (todo) => todo.completed,
+    Active: todo => !todo.completed,
+    Completed: todo => todo.completed
   };
 
   const filterNames = Object.keys(filterButtons);
 
   const taskList = todos
     .filter(filterButtons[filter])
-    .map((todo) => (
+    .map(todo => (
       <Todo
         id={todo.id}
         name={todo.name}
@@ -40,7 +40,7 @@ export default function App({ tasks }) {
       />
     ));
 
-  const buttonsList = filterNames.map((name) => (
+  const buttonsList = filterNames.map(name => (
     <FilterButtons
       key={name}
       name={name}
@@ -60,7 +60,7 @@ export default function App({ tasks }) {
   }
 
   function editTask(id, newName) {
-    const editedTasks = todos.map((todo) => {
+    const editedTasks = todos.map(todo => {
       if (todo.id === id) {
         return { ...todo, name: newName };
       } else {
@@ -71,12 +71,12 @@ export default function App({ tasks }) {
   }
 
   function deleteTask(id) {
-    const remainingTasks = todos.filter((todo) => todo.id !== id);
+    const remainingTasks = todos.filter(todo => todo.id !== id);
     setTodos(remainingTasks);
   }
 
   function handleToggleCompleted(id) {
-    const updatedTasks = todos.map((todo) => {
+    const updatedTasks = todos.map(todo => {
       if (todo.id === id) {
         return { ...todo, completed: !todo.completed };
       } else {
@@ -87,7 +87,7 @@ export default function App({ tasks }) {
   }
 
   function clearCompleted() {
-    const activeTasks = todos.filter((todo) => !todo.completed);
+    const activeTasks = todos.filter(todo => !todo.completed);
     setTodos(activeTasks);
   }
 
@@ -137,7 +137,7 @@ export default function App({ tasks }) {
             </button>
           </aside>
         </main>
-        <footer></footer>
+        <footer />
       </div>
     </IconContext.Provider>
   );

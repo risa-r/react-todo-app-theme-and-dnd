@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./form.css";
+import "./form.scoped.css";
 
 export default function Form({ addTask }) {
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ export default function Form({ addTask }) {
 
   return (
     <form className="add-task-form" onSubmit={handleSubmit}>
-      <label id="todoInput"></label>
+      <label id="todoInput" />
       <input
         className="add-task-input"
         type="text"
@@ -28,7 +28,7 @@ export default function Form({ addTask }) {
         value={name}
         onChange={handleChange}
         maxLength="75"
-      ></input>
+      />
       <button className="add-button" type="submit">
         Add<span className="visually-hidden"> task</span>
       </button>

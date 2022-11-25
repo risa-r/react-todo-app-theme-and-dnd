@@ -6,7 +6,7 @@ import App from "./App";
 const DATA = [
   { id: 0, name: "grocery shopping", completed: true },
   { id: 1, name: "send a letter", completed: false },
-  { id: 2, name: "order pizza", completed: false },
+  { id: 2, name: "order pizza", completed: false }
 ];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
