@@ -1,11 +1,8 @@
-.filter-buttons {
+.filter-button {
   font-weight: 700;
+  padding: 0 0.5rem;
 }
 
-.filter-buttons:hover {
-  color:var(--button-hover-color);
-}
-
-.filter-buttons[aria-pressed=isPressed]{
-  color: blue;
+.filter-button:hover {
+  color: var(--button-hover-color);
 }

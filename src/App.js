@@ -129,7 +129,7 @@ export default function App({ tasks }) {
             <p className="task-counter" tabIndex="-1" ref={taskCounterTextRef}>
               {activeTasksNumber} {itemsNoun} left
             </p>
-            {buttonsList}
+            <div className="filter-button-wrapper">{buttonsList}</div>
             <button className="clear-completed-btn" onClick={clearCompleted}>
               Clear Completed<span className="visually-hidden"> tasks</span>
             </button>
