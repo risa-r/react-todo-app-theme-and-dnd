@@ -135,7 +135,6 @@ export default function App({ tasks }) {
             </button>
           </aside>
         </main>
-        <footer />
       </div>
     </div>
   );
