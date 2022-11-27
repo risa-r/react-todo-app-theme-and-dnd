@@ -78,12 +78,11 @@ input[type='checkbox']:checked::before{
   color: var(--todo-text-color);
 }
 
-.edit{
-  color: blue;
-  font-size: 0.8rem;
+.edit-delete-btn{
+  color: var(--button-text-color);
   margin-left: 1rem;
 }
 
-.edit{
-  color: red;
+.edit-delete-btn:hover{
+  color: var(--button-hover-color) ;
 }

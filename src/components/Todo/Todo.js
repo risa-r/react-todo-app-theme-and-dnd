@@ -66,11 +66,11 @@ export default function Todo({
       </div>
       <label className="todo-text">{name}</label>
       <button onClick={() => setIsEditing(true)} ref={editButtonRef}>
-        <FiEdit2 className="edit" />
+        <FiEdit2 className="edit-delete-btn" />
         <span className="visually-hidden">Edit task</span>
       </button>
       <button onClick={() => deleteTask(id)}>
-        <RiDeleteBinLine className="edit" />
+        <RiDeleteBinLine className="edit-delete-btn" />
         <span className="visually-hidden">Delete task</span>
       </button>
     </>
@@ -86,10 +86,9 @@ export default function Todo({
   }, [wasEditing, isEditing]);
 
   return (
-    <IconContext.Provider value={{ color: "hsl(236, 9%, 61%)", size: "1rem" }}>
-      <li className="todo-item" key={id}>
-        {isEditing ? editTemplate : viewTemplate}
-      </li>
-    </IconContext.Provider>
+    /*IconContext.Provider value={{ color: "hsl(236, 9%, 61%)", size: "1rem" }} */
+    <li className="todo-item" key={id}>
+      {isEditing ? editTemplate : viewTemplate}
+    </li>
   );
 }
