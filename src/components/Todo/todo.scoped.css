@@ -21,6 +21,10 @@ input[type='checkbox']{
   background: var(--list-background);
 }
 
+input[type='checkbox']:hover{
+  cursor: pointer;
+}
+
 .gradient-checkbox {
   position: relative;
   background: var(--checkbox-border-color);

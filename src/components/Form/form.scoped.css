@@ -17,6 +17,10 @@
   margin: 0.2rem;
 }
 
+.add-task-input:focus{
+  color: var(--todo-text-color);
+}
+
 .add-button {
   font-size: 1rem;
   width: 2.5rem;
