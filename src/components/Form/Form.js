@@ -23,7 +23,7 @@ export default function Form({ addTask }) {
       <input
         className="add-task-input"
         type="text"
-        placeholder="new task"
+        placeholder="Create a new task..."
         name="todoInput"
         value={name}
         onChange={handleChange}

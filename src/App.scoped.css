@@ -1,7 +1,28 @@
+/* accessibly hide characters from buttons*/
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* styles */
+
 .App {
+    color:var(--todo-text-color);
+    background-color: var(--background-color);
+    background-image: var(--background-image);
+    background-repeat: no-repeat;
+  }
+
+  .wrapper {
     display: block;
-    width: 31rem;
     margin: 0 auto;
+    width: 31rem;
   }
 
 button, input {
@@ -13,24 +34,14 @@ button, input {
   } 
   
 button {
-    color: var(--text-secondary);
+    color: var(--button-text-color);
     font-weight: 400;
     border: none;
     background-color: transparent;
 }
 
 button:hover {
-    color: var(--text-primary)
-}
-
-.visually-hidden {
-    position: absolute !important;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    white-space: nowrap;
+    color: var(--todo-text-color)
 }
 
 header {
@@ -44,11 +55,28 @@ h1 {
     letter-spacing: 0.7rem;
 }
 
-.theme-button {
-    padding: 1rem;
+.theme-btn {
+  color: hsl(0, 0%, 98%);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.buttons-wrapper {
+.todo-list-and-buttons-wrapper {
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  background-color: var(--list-background);
+  border: 1px solid var(--border-color);
+}
+
+.todo-list{
+  margin-top: 0;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+
+.buttons-wrapper{
     height: 3rem;
     font-size: 0.9rem;
     display: flex;
@@ -56,18 +84,15 @@ h1 {
     justify-content: space-evenly
   }
   
-  
-  
-  .task-counter {
-    color:var(--text-secondary);
-    padding-right: 1.6rem;
-  }
-  
-  .clear-completed-btn {
-    padding-left: 1.6rem;
-  }
-  
-  footer {
-    height: 5rem;
-  }
-  
+.task-counter {
+  color:var(--button-text-color);
+  padding-right: 1.6rem;
+}
+
+.clear-completed-btn {
+  padding-left: 1.6rem;
+}
+
+footer {
+  height: 5rem;
+} 

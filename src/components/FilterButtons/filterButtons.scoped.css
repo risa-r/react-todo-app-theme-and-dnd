@@ -1,7 +1,7 @@
 .filter-buttons {
-    font-weight: 700;
-  }
-  
-  .filter-buttons:hover {
-    color:var(--text-primary)
-  }
+  font-weight: 700;
+}
+
+.filter-buttons:hover {
+  color:var(--button-hover-color)
+}

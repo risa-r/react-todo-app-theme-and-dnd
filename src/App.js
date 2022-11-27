@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import FilterButtons from "./components/FilterButtons/FilterButtons";
 import useLocalStorage from "use-local-storage";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
-import { IconContext } from "react-icons";
 import usePrevious from "./components/UsePrevious";
 import "./App.scoped.css";
 
@@ -103,18 +102,21 @@ export default function App({ tasks }) {
   }, [todos.length, prevTodosLength]);
 
   return (
-    <IconContext.Provider value={{ color: "hsl(0, 0%, 98%)", size: "1.7rem" }}>
-      <div className="App" data-theme={theme}>
+    <div className="App" data-theme={theme}>
+      <div className="wrapper">
         <header>
           <h1>TODO</h1>
           <button
-            className="theme-button"
             onClick={() => {
               switchTheme();
               console.log(theme);
             }}
           >
-            {theme === "dark" ? <BsSunFill /> : <BsMoonFill />}
+            {theme === "dark" ? (
+              <BsSunFill className="theme-btn" />
+            ) : (
+              <BsMoonFill className="theme-btn" />
+            )}
             <span className="visually-hidden">
               Switch to {theme === "light" ? "dark" : "light"} theme
             </span>
@@ -124,13 +126,9 @@ export default function App({ tasks }) {
         <main className="todo-list-and-buttons-wrapper">
           <ul className="todo-list">{taskList}</ul>
           <aside className="buttons-wrapper">
-            <div
-              className="task-counter"
-              tabIndex="-1"
-              ref={taskCounterTextRef}
-            >
+            <p className="task-counter" tabIndex="-1" ref={taskCounterTextRef}>
               {activeTasksNumber} {itemsNoun} left
-            </div>
+            </p>
             {buttonsList}
             <button className="clear-completed-btn" onClick={clearCompleted}>
               Clear Completed<span className="visually-hidden"> tasks</span>
@@ -139,6 +137,6 @@ export default function App({ tasks }) {
         </main>
         <footer />
       </div>
-    </IconContext.Provider>
+    </div>
   );
 }

@@ -59,23 +59,18 @@ export default function Todo({
     <>
       <div className="gradient-checkbox">
         <input
-          className="todo-checkbox"
           type="checkbox"
           checked={completed}
           onChange={() => handleToggleCompleted(id)}
         />
       </div>
       <label className="todo-text">{name}</label>
-      <button
-        className="todo-btn edit"
-        onClick={() => setIsEditing(true)}
-        ref={editButtonRef}
-      >
-        <FiEdit2 />
+      <button onClick={() => setIsEditing(true)} ref={editButtonRef}>
+        <FiEdit2 className="edit" />
         <span className="visually-hidden">Edit task</span>
       </button>
-      <button className="todo-btn delete" onClick={() => deleteTask(id)}>
-        <RiDeleteBinLine />
+      <button onClick={() => deleteTask(id)}>
+        <RiDeleteBinLine className="edit" />
         <span className="visually-hidden">Delete task</span>
       </button>
     </>
