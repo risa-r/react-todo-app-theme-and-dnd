@@ -109,7 +109,6 @@ export default function App({ tasks }) {
           <button
             onClick={() => {
               switchTheme();
-              console.log(theme);
             }}
           >
             {theme === "dark" ? (

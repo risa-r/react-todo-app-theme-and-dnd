@@ -64,7 +64,7 @@ h1 {
 }
 
 .todo-list-and-buttons-wrapper {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-radius: 5px;
   background-color: var(--list-background);
   border: 1px solid var(--border-color);
@@ -111,11 +111,10 @@ h1 {
   .buttons-wrapper {
     display: grid;
     font-size: 0.8rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 5rem 1fr;
     grid-template-rows: repeat(2, 3rem);
-    row-gap: 1.5rem;
+    row-gap: 1rem;
   }
-  
 
   .task-counter {
     grid-column: 1;
@@ -138,10 +137,10 @@ h1 {
     grid-column: 1/4;
     grid-row: 2;
     height: 3rem;
-    padding: 0 2.6rem;
+    padding: 0 4rem;
   }
 
   .filter-button {
-    padding: 1rem;
+    padding: 1rem 0.7rem;
   }
 }
