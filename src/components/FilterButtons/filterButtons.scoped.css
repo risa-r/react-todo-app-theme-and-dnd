@@ -5,3 +5,7 @@
 .filter-buttons:hover {
   color:var(--button-hover-color);
 }
+
+.filter-buttons[aria-pressed=isPressed]{
+  color: blue;
+}
