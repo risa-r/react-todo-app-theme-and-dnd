@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  transition: all .2s;
 }
 
 input[type='checkbox']{
@@ -19,6 +20,7 @@ input[type='checkbox']{
   height: 20px;
   border-radius: 50%;
   background: var(--list-background);
+  transition: all .2s;
 }
 
 input[type='checkbox']:hover{
@@ -31,6 +33,7 @@ input[type='checkbox']:hover{
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  transition: all .2s;
 }
 
 .gradient-checkbox:hover{
@@ -83,6 +86,7 @@ input[type='checkbox']:checked::before{
 .edit-delete-btn{
   color: var(--button-text-color);
   margin-left: 1rem;
+  transition: all .2s;
 }
 
 .edit-delete-btn:hover{

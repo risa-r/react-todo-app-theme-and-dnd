@@ -17,7 +17,8 @@
   background-color: var(--background-color);
   background-image: var(--background-image);
   background-repeat: no-repeat;
-  height: 100vh
+  height: 100vh;
+  transition: all .2s;
 }
 
 .wrapper {
@@ -40,6 +41,7 @@ button {
     font-weight: 400;
     border: none;
     background-color: transparent;
+    transition: all .2s;
 }
 
 button:hover {
@@ -64,10 +66,12 @@ h1 {
 }
 
 .todo-list-and-buttons-wrapper {
+  position: relative;
   margin-top: 1rem;
   border-radius: 5px;
   background-color: var(--list-background);
   border: 1px solid var(--border-color);
+  transition: all .2s;
 }
 
 .todo-list{
@@ -76,6 +80,20 @@ h1 {
   list-style: none;
   margin-bottom: 0;
 }
+
+/*
+.todo-list-and-buttons-wrapper::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to bottom, hsl(0, 0%, 98%) 0%, hsl(236, 33%, 92%) 100% );
+  transform: translate3d(0px, 20px, 0) scale(0.95);
+  filter: blur(20px);
+}*/
 
 .buttons-wrapper{
     height: 3rem;
