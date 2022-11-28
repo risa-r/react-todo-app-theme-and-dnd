@@ -12,6 +12,20 @@
   --button-hover-color:hsl(235, 19%, 35%);
   --checkbox-border-color: hsl(233, 11%, 84%);
   --border-color:hsl(236, 33%, 92%);
+  --main-box-shadow:0 2px 1px rgba(210, 211, 219, 0.02),
+    0 6px 5px rgba(210, 211, 219, 0.03),
+    0 12px 8px rgba(210, 211, 219, 0.06),
+    0 20px 12px rgba(210, 211, 219, 0.09),
+    0 28px 18px rgba(210, 211, 219, 0.15),
+    0 40px 20px rgba(210, 211, 219, 0.35) 
+  ;
+  --sub-box-shadow:0 2px 1px rgba(210, 211, 219, 0.02),
+    0 3px 5px rgba(210, 211, 219, 0.03),
+    0 4px 8px rgba(210, 211, 219, 0.06),
+    0 6px 12px rgba(210, 211, 219, 0.09),
+    0 8px 18px rgba(210, 211, 219, 0.15),
+    0 10px 20px rgba(210, 211, 219, 0.35) 
+  ;
 }
 
 [data-theme='dark']{
@@ -24,6 +38,8 @@
   --button-hover-color:hsl(236, 33%, 92%);
   --checkbox-border-color: hsl(233, 14%, 35%);
   --border-color:hsl(237, 14%, 26%);
+  --main-box-shadow: none;
+  --sub-box-shadow: none;
 }
 
 body {

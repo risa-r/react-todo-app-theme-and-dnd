@@ -71,6 +71,7 @@ h1 {
   border-radius: 5px;
   background-color: var(--list-background);
   border: 1px solid var(--border-color);
+  box-shadow: var(--main-box-shadow);
   transition: all .2s;
 }
 
@@ -80,20 +81,6 @@ h1 {
   list-style: none;
   margin-bottom: 0;
 }
-
-/*
-.todo-list-and-buttons-wrapper::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to bottom, hsl(0, 0%, 98%) 0%, hsl(236, 33%, 92%) 100% );
-  transform: translate3d(0px, 20px, 0) scale(0.95);
-  filter: blur(20px);
-}*/
 
 .buttons-wrapper{
     height: 3rem;
@@ -156,6 +143,8 @@ h1 {
     grid-row: 2;
     height: 3rem;
     padding: 0 4rem;
+    box-shadow: var(--sub-box-shadow);
+    transition: all .2s;
   }
 
   .filter-button {
