@@ -63,7 +63,18 @@ export default function Todo({
           onChange={() => handleToggleCompleted(id)}
         />
       </div>
-      <label className="todo-text">{name}</label>
+      <label className="todo-text">
+        <span
+          style={{
+            textDecoration: completed ? "line-through" : "none",
+            color: completed
+              ? "var(--button-text-color)"
+              : "var(--todo-text-color)"
+          }}
+        >
+          {name}
+        </span>
+      </label>
       <button onClick={() => setIsEditing(true)} ref={editButtonRef}>
         <FiEdit2 className="edit-delete-btn" />
         <span className="visually-hidden">Edit task</span>
@@ -85,7 +96,6 @@ export default function Todo({
   }, [wasEditing, isEditing]);
 
   return (
-    /*IconContext.Provider value={{ color: "hsl(236, 9%, 61%)", size: "1rem" }} */
     <li className="todo-item" key={id}>
       {isEditing ? editTemplate : viewTemplate}
     </li>
