@@ -96,7 +96,7 @@ export default function Todo({
   }, [wasEditing, isEditing]);
 
   return (
-    <li className="todo-item" key={id}>
+    <li className="todo-item" key={id} draggable="true">
       {isEditing ? editTemplate : viewTemplate}
     </li>
   );

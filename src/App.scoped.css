@@ -99,6 +99,10 @@ h1 {
   padding-left: 1.6rem;
 }
 
+.todo-item.dragging {
+  opacity: .8;
+}
+
 @media screen and (max-width: 375px) {
   .App {
     background-image: var(--background-mobile-image);
