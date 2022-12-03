@@ -9,7 +9,6 @@
   align-items: center;
   overflow: hidden;
   transition: all .2s;
-  cursor: move;
 }
 
 input[type='checkbox']{
@@ -82,6 +81,10 @@ input[type='checkbox']:checked::before{
 
 .todo-btn:hover{
   color: var(--todo-text-color);
+}
+
+.drag-handle {
+  cursor: move;
 }
 
 .edit-delete-btn{

@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import { MdDragHandle } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import usePrevious from "../UsePrevious";
 import "./todo.scoped.css";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { DragOverlay } from "@dnd-kit/core";
 
 export default function Todo({
   id,
@@ -12,10 +14,12 @@ export default function Todo({
   completed,
   editTask,
   deleteTask,
-  handleToggleCompleted
+  handleToggleCompleted,
+  activeId
 }) {
   const [taskName, setTaskName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
+
   const wasEditing = usePrevious(isEditing);
   const editButtonRef = useRef(null);
   const editInputRef = useRef(null);
@@ -78,13 +82,7 @@ export default function Todo({
           onChange={() => handleToggleCompleted(id)}
         />
       </div>
-      <label
-        className="todo-text"
-        key={id}
-        style={style}
-        {...attributes}
-        {...listeners}
-      >
+      <label className="todo-text" key={id}>
         <span
           style={{
             textDecoration: completed ? "line-through" : "none",
@@ -96,6 +94,9 @@ export default function Todo({
           {name}
         </span>
       </label>
+      <button className="drag-handle">
+        <MdDragHandle style={style} {...attributes} {...listeners} />
+      </button>
       <button onClick={() => setIsEditing(true)} ref={editButtonRef}>
         <FiEdit2 className="edit-delete-btn" />
         <span className="visually-hidden">Edit task</span>
@@ -117,8 +118,10 @@ export default function Todo({
   }, [wasEditing, isEditing]);
 
   return (
-    <li className="todo-item" ref={setNodeRef}>
-      {isEditing ? editTemplate : viewTemplate}
-    </li>
+    <>
+      <li className="todo-item" ref={setNodeRef}>
+        {isEditing ? editTemplate : viewTemplate}
+      </li>
+    </>
   );
 }
