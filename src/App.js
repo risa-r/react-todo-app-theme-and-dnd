@@ -7,6 +7,12 @@ import useLocalStorage from "use-local-storage";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import usePrevious from "./components/UsePrevious";
 import "./App.scoped.css";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy
+} from "@dnd-kit/sortable";
 
 export default function App({ tasks }) {
   const [todos, setTodos] = useState(tasks);
@@ -90,54 +96,20 @@ export default function App({ tasks }) {
     setTodos(activeTasks);
   }
 
-  // draggable start
-
-  const draggables = document.querySelectorAll(".todo-item");
-  const draggableContainer = document.querySelectorAll(".todo-list");
-
-  draggables.forEach(draggable => {
-    draggable.addEventListener("dragstart", () => {
-      draggable.classList.add("dragging");
-    });
-    draggable.addEventListener("dragend", () => {
-      draggable.classList.remove("dragging");
-    });
-  });
-
-  draggableContainer.forEach(container => {
-    container.addEventListener("dragover", e => {
-      e.preventDefault();
-      const afterElement = getDragAfterElement(container, e.clientY);
-      console.log(afterElement);
-      const draggable = document.querySelector(".dragging");
-      if (afterElement === null) {
-        container.appendChild(draggable);
-      } else {
-        container.insertBefore(draggable, afterElement);
-      }
-    });
-  });
-
-  function getDragAfterElement(container, y) {
-    const draggableElements = [
-      ...container.querySelectorAll(".todo-item:not(.dragging)")
-    ];
-
-    return draggableElements.reduce(
-      (closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closest;
-        }
-      },
-      { offset: Number.NEGATIVE_INFINITY }
-    ).element;
+  function handleDragEnd(event) {
+    console.log("Drag end called");
+    const { active, over } = event;
+    console.log("ACTIVE:" + active.id);
+    console.log("OVER:" + over.id);
+    if (active.id !== over.id) {
+      setTodos(items => {
+        const activeIndex = items.findIndex(item => item.id === active.id);
+        const overIndex = items.findIndex(item => item.id === over.id);
+        console.log(arrayMove(items, activeIndex, overIndex));
+        return arrayMove(items, activeIndex, overIndex);
+      });
+    }
   }
-
-  // draggable end
 
   const taskCounterTextRef = useRef(null);
   const activeTasksNumber = todos.filter(filterButtons["Active"]).length;
@@ -151,39 +123,51 @@ export default function App({ tasks }) {
   }, [todos.length, prevTodosLength]);
 
   return (
-    <div className="App" data-theme={theme}>
-      <div className="wrapper">
-        <header>
-          <h1>TODO</h1>
-          <button
-            onClick={() => {
-              switchTheme();
-            }}
-          >
-            {theme === "dark" ? (
-              <BsSunFill className="theme-btn" />
-            ) : (
-              <BsMoonFill className="theme-btn" />
-            )}
-            <span className="visually-hidden">
-              Switch to {theme === "light" ? "dark" : "light"} theme
-            </span>
-          </button>
-        </header>
-        <Form addTask={addTask} />
-        <main className="todo-list-and-buttons-wrapper">
-          <ul className="todo-list">{taskList}</ul>
-          <aside className="buttons-wrapper">
-            <p className="task-counter" tabIndex="-1" ref={taskCounterTextRef}>
-              {activeTasksNumber} {itemsNoun} left
-            </p>
-            <div className="filter-button-wrapper">{buttonsList}</div>
-            <button className="clear-completed-btn" onClick={clearCompleted}>
-              Clear Completed<span className="visually-hidden"> tasks</span>
+    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <div className="App" data-theme={theme}>
+        <div className="wrapper">
+          <header>
+            <h1>TODO</h1>
+            <button
+              onClick={() => {
+                switchTheme();
+              }}
+            >
+              {theme === "dark" ? (
+                <BsSunFill className="theme-btn" />
+              ) : (
+                <BsMoonFill className="theme-btn" />
+              )}
+              <span className="visually-hidden">
+                Switch to {theme === "light" ? "dark" : "light"} theme
+              </span>
             </button>
-          </aside>
-        </main>
+          </header>
+          <Form addTask={addTask} />
+          <main className="todo-list-and-buttons-wrapper">
+            <SortableContext
+              items={todos}
+              strategy={verticalListSortingStrategy}
+            >
+              <ul className="todo-list">{taskList}</ul>
+            </SortableContext>
+
+            <aside className="buttons-wrapper">
+              <p
+                className="task-counter"
+                tabIndex="-1"
+                ref={taskCounterTextRef}
+              >
+                {activeTasksNumber} {itemsNoun} left
+              </p>
+              <div className="filter-button-wrapper">{buttonsList}</div>
+              <button className="clear-completed-btn" onClick={clearCompleted}>
+                Clear Completed<span className="visually-hidden"> tasks</span>
+              </button>
+            </aside>
+          </main>
+        </div>
       </div>
-    </div>
+    </DndContext>
   );
 }

@@ -3,6 +3,8 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import usePrevious from "../UsePrevious";
 import "./todo.scoped.css";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export default function Todo({
   id,
@@ -17,6 +19,19 @@ export default function Todo({
   const wasEditing = usePrevious(isEditing);
   const editButtonRef = useRef(null);
   const editInputRef = useRef(null);
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition
+  } = useSortable({ id: id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  };
 
   function handleChange(e) {
     setTaskName(e.target.value);
@@ -63,7 +78,13 @@ export default function Todo({
           onChange={() => handleToggleCompleted(id)}
         />
       </div>
-      <label className="todo-text">
+      <label
+        className="todo-text"
+        key={id}
+        style={style}
+        {...attributes}
+        {...listeners}
+      >
         <span
           style={{
             textDecoration: completed ? "line-through" : "none",
@@ -96,7 +117,7 @@ export default function Todo({
   }, [wasEditing, isEditing]);
 
   return (
-    <li className="todo-item" key={id} draggable="true">
+    <li className="todo-item" ref={setNodeRef}>
       {isEditing ? editTemplate : viewTemplate}
     </li>
   );
