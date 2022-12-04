@@ -104,15 +104,19 @@ export default function App({ tasks }) {
 
   function handleDragEnd(event) {
     const { active, over } = event;
-    console.log("ACTIVE:" + active.id);
-    console.log("OVER:" + over.id);
-    if (active.id !== over.id) {
-      setTodos(items => {
-        const activeIndex = items.findIndex(item => item.id === active.id);
-        const overIndex = items.findIndex(item => item.id === over.id);
-        console.log(arrayMove(items, activeIndex, overIndex));
-        return arrayMove(items, activeIndex, overIndex);
-      });
+    if (over === null) {
+      return;
+    } else {
+      console.log("ACTIVE:" + active.id);
+      console.log("OVER:" + over.id);
+      if (active.id !== over.id) {
+        setTodos(items => {
+          const activeIndex = items.findIndex(item => item.id === active.id);
+          const overIndex = items.findIndex(item => item.id === over.id);
+          console.log(arrayMove(items, activeIndex, overIndex));
+          return arrayMove(items, activeIndex, overIndex);
+        });
+      }
     }
     setActiveId(null);
   }
