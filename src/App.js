@@ -22,7 +22,6 @@ export default function App({ tasks }) {
     "theme",
     defaultDark ? "dark" : "light"
   );
-  const [activeId, setActiveId] = useState(null);
 
   const filterButtons = {
     All: () => true,
@@ -43,7 +42,6 @@ export default function App({ tasks }) {
         editTask={editTask}
         deleteTask={deleteTask}
         handleToggleCompleted={handleToggleCompleted}
-        activeId={activeId}
       />
     ));
 
@@ -98,10 +96,6 @@ export default function App({ tasks }) {
     setTodos(activeTasks);
   }
 
-  function handleDragStart(e) {
-    setActiveId(e.active.id);
-  }
-
   function handleDragEnd(event) {
     const { active, over } = event;
     if (over === null) {
@@ -118,7 +112,6 @@ export default function App({ tasks }) {
         });
       }
     }
-    setActiveId(null);
   }
 
   const taskCounterTextRef = useRef(null);
@@ -133,11 +126,7 @@ export default function App({ tasks }) {
   }, [todos.length, prevTodosLength]);
 
   return (
-    <DndContext
-      collisionDetection={closestCenter}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
+    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <div className="App" data-theme={theme}>
         <div className="wrapper">
           <header>
