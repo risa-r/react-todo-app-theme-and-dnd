@@ -169,6 +169,7 @@ export default function App({ tasks }) {
               </button>
             </aside>
           </main>
+          <footer>Drag and drop to reorder list</footer>
         </div>
       </div>
     </DndContext>

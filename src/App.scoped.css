@@ -103,6 +103,13 @@ h1 {
   opacity: .8;
 }
 
+footer {
+  color: var(--button-text-color);
+  font-size: 0.9rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+
 @media screen and (max-width: 375px) {
   .App {
     background-image: var(--background-mobile-image);
