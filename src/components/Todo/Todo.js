@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { MdDragHandle } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
+import { MdCancel } from "react-icons/md";
+import { BsCheck2 } from "react-icons/bs";
 import usePrevious from "../UsePrevious";
 import "./todo.scoped.css";
 import { useSortable } from "@dnd-kit/sortable";
@@ -50,7 +52,7 @@ export default function Todo({
   }
 
   const editTemplate = (
-    <form onSubmit={handleSubmit}>
+    <form className="edit-form" onSubmit={handleSubmit}>
       <input
         className="todo-edit-input"
         type="text"
@@ -62,11 +64,13 @@ export default function Todo({
       <label>
         <span className="visually-hidden">edit the task name of '{name}'</span>
       </label>
-      <button className="todo-btn" onClick={handleCancel}>
-        Cancel
+      <button className="todo-btn cancel" onClick={handleCancel}>
+        <MdCancel />
+        <span className="visually-hidden">Cancel edit</span>
       </button>
-      <button className="todo-btn" type="submit">
-        Save
+      <button className="todo-btn save" type="submit">
+        <BsCheck2 />
+        <span className="visually-hidden">Save edit</span>
       </button>
     </form>
   );

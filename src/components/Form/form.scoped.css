@@ -1,17 +1,17 @@
 
 .add-task-form {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 29rem 3rem 1fr;
   align-items: center;
 }
 
 .add-task-input{
+  grid-column: 2;
   background-color: var(--list-background);
   border-radius: 5px;
   border: 1px solid var(--border-color);
   color: var(--button-text-color);
   margin-left:0;
-  width: 28rem;
   height: 3rem;
   text-indent: 1rem;
   margin: 0.2rem;
@@ -23,20 +23,33 @@
 }
 
 .add-button {
+  grid-column: 3;
   font-size: 1rem;
   width: 2.5rem;
   height: 2.8rem;
-  margin-left: 0.3rem;
   background-color: var(--list-background);
   border-radius: 3px;
   border: 1px solid var(--border-color);
   transition: all .2s;
 }
 
+@media screen and (max-width: 560px){
+  .add-task-form{
+    grid-template-columns: 1fr 3rem;
+  }
+
+  .add-task-input{
+    grid-column: 1;
+  }
+
+  .add-button{
+    grid-column: 2;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .add-button {
     font-size: 0.8rem;
-    margin-left: 0;
     padding: 0.5rem;
   }
 }
