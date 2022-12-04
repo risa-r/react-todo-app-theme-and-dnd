@@ -6,7 +6,6 @@ import usePrevious from "../UsePrevious";
 import "./todo.scoped.css";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { DragOverlay } from "@dnd-kit/core";
 
 export default function Todo({
   id,
@@ -14,8 +13,7 @@ export default function Todo({
   completed,
   editTask,
   deleteTask,
-  handleToggleCompleted,
-  activeId
+  handleToggleCompleted
 }) {
   const [taskName, setTaskName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
