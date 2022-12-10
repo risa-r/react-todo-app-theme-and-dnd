@@ -14,7 +14,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -35,12 +34,12 @@ Users should be able to:
 ### Screenshot
 
 - Desktop
-  ![Desktop light theme screenshot](screenshots/desktop-light-theme.png)
-  ![Desktop dark theme screenshot](screenshots/desktop-dark-theme.png)
+  ![Desktop light theme screenshot](screenshots/desktop-light.png)
+  ![Desktop dark theme screenshot](screenshots/desktop-dark.png)
 
 - Mobile
-  ![Mobile light theme screenshot](screenshots/mobile-light-theme.png)
-  ![Mobile dark theme screenshot](screenshots/mobile-dark-theme.png)
+  ![Mobile light theme screenshot](screenshots/mobile-light.png)
+  ![Mobile dark theme screenshot](screenshots/mobile-dark.png)
 
 ### Links
 
