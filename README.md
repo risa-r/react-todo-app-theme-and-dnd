@@ -38,8 +38,7 @@ Users should be able to:
   ![Desktop dark theme screenshot](screenshots/desktop-dark.png)
 
 - Mobile
-  ![Mobile light theme screenshot](screenshots/mobile-light.png)
-  ![Mobile dark theme screenshot](screenshots/mobile-dark.png)
+  ![Mobile themes screenshot](screenshots/mobile-screenshots.png)
 
 ### Links
 
