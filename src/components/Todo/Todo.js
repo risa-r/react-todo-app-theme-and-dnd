@@ -56,13 +56,16 @@ export default function Todo({
       <input
         className="todo-edit-input"
         type="text"
+        id="edit-input"
         value={taskName}
         onChange={handleChange}
         maxLength="75"
         ref={editInputRef}
       />
       <label>
-        <span className="visually-hidden">edit the task name of '{name}'</span>
+        <span className="visually-hidden" name="edit-input">
+          edit the task name of '{name}'
+        </span>
       </label>
       <button className="todo-btn cancel" onClick={handleCancel}>
         <MdCancel />
@@ -81,10 +84,11 @@ export default function Todo({
         <input
           type="checkbox"
           checked={completed}
+          id="checkbox"
           onChange={() => handleToggleCompleted(id)}
         />
       </div>
-      <label className="todo-text" key={id}>
+      <label className="todo-text" key={id} name="checkbox">
         <span
           style={{
             textDecoration: completed ? "line-through" : "none",
