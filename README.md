@@ -43,7 +43,7 @@ Users should be able to:
 ### Links
 
 - [Solution](https://github.com/risa-r/react-todo-app-with-themes-and-dnd-reordering)
-- [Live Site](https://risa-r.github.io/react-todo-app-with-themes-and-dnd-reordering)
+- [Live Site](https://risa-r.github.io/react-todo-app-theme-and-dnd/)
 
 ## My process
 
