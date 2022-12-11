@@ -1,7 +1,7 @@
 {
   "name": "todo-list",
   "version": "0.1.0",
-  "homepage": "https://risa-r.github.io/",
+  "homepage": "https://risa-r.github.io/react-todo-app-theme-and-dnd/",
   "private": false,
   "dependencies": {
     "@craco/craco": "^5.3.0",
