@@ -98,6 +98,7 @@ export default function Todo({
       </label>
       <button className="drag-handle">
         <MdDragHandle style={style} {...attributes} {...listeners} />
+        <span className="visually-hidden">Drag task</span>
       </button>
       <button onClick={() => setIsEditing(true)} ref={editButtonRef}>
         <FiEdit2 className="edit-delete-btn" />
